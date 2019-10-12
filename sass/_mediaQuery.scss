@@ -1,0 +1,70 @@
+@mixin pop-up-col($selector, $widthValue)
+{
+  .pop-up-container
+  {
+    .popup-box
+    {
+      .container-popup
+      {
+        .row-popup
+        {
+          .col
+          {
+            &.#{$selector}
+            {
+                width:$widthValue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// col-lg-6 query
+@media (min-width: 1111px)
+{
+  @include pop-up-col('pop-col-6', 16.6666666666666%);
+  @include pop-up-col('pop-col-3', 33.3333333333333%);
+  @include pop-up-col('pop-col-4', 25%);
+  @include pop-up-col('pop-col-5', 16.6666666666666%);
+}
+@media (min-width: 601px) and (max-width: 1110px)
+{
+  @include pop-up-col('pop-col-6', 20%);
+  @include pop-up-col('pop-col-3', 50%);
+  @include pop-up-col('pop-col-4', 25%);
+  @include pop-up-col('pop-col-5', 16.6666666666666%);
+}
+@media (min-width: 601px) and (max-width: 999px)
+{
+  @include pop-up-col('pop-col-6', 25%);
+  @include pop-up-col('pop-col-4', 25%);
+  @include pop-up-col('pop-col-5', 25%);
+}
+@media (min-width: 601px) and (max-width: 836px)
+{
+  @include pop-up-col('pop-col-6', 33.3333333333333%);
+  @include pop-up-col('pop-col-4', 33.3333333333333%);
+  @include pop-up-col('pop-col-5', 25%);
+}
+@media (min-width: 601px) and (max-width: 700px)
+{
+  @include pop-up-col('pop-col-6', 50%);
+  @include pop-up-col('pop-col-4', 50%);
+  @include pop-up-col('pop-col-5', 50%);
+}
+@media (max-width: 600px)
+{
+  @include pop-up-col('pop-col-6', 100%);
+  @include pop-up-col('pop-col-2', 100%);
+  @include pop-up-col('pop-col-3', 100%);
+  @include pop-up-col('pop-col-4', 100%);
+  @include pop-up-col('pop-col-5', 100%);
+}
+// col-lg-2
+//TODO: force 2 column on extra small screen
+@media (min-width: 601px)
+{
+    @include pop-up-col('pop-col-2', 50%);
+    @include pop-up-col('pop-col-1', 100%);
+}
