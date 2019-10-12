@@ -382,31 +382,30 @@ let easyToUsePopup = {
 
                      if (typeof popupElementParameter.method != "" && (popupElementParameter.method).toLocaleLowerCase() == "post")
                      {
-                      // if (validURL(popupElementParameter.url))
-                      // {
+                      if (validURL(popupElementParameter.url))
+                      {
                         xhttp.open("POST", popupElementParameter.url, true);
                         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                         xhttp.send(urlEncoded(formDataArrName, formDataArr, formDataIndex));
-                      //}
-                      // else 
-                      // {
-                      //   console.error("Please Enter a Valid Url");
-                      // }
+                      }
+                      else 
+                      {
+                        console.error("Please Enter a Valid Url");
+                      }
                     }
                     else if (typeof popupElementParameter.method != "" && (popupElementParameter.method).toLocaleLowerCase() == "get")
                     {
                       //check the url if it's a valid url
                       
-                      // if (validURL(popupElementParameter.url))
-                      // {
+                      if (validURL(popupElementParameter.url))
+                      {
                         xhttp.open("GET", popupElementParameter.url, true);
                         xhttp.send();
-                      // }
-                      // else 
-                      // {
-                      //   console.error("Please Enter a Valid Url");
-                      // }
-                      
+                      }
+                      else 
+                      {
+                        console.error("Please Enter a Valid Url");
+                      }
                     }
                     else
                     {
