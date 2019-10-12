@@ -144,7 +144,7 @@
       cursor: pointer;
 
     }
-    .container-popup
+    .container-popup 
     {
       .row-popup
       {
@@ -157,6 +157,10 @@
         }
         .col
         {
+          &.pdZ
+          {
+            padding: 0 !important;
+          }
           width: 100%;
           padding: 0 10px;
         }

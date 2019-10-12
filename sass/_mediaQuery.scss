@@ -60,6 +60,21 @@
   @include pop-up-col('pop-col-3', 100%);
   @include pop-up-col('pop-col-4', 100%);
   @include pop-up-col('pop-col-5', 100%);
+
+   .container-popup
+    {
+      .row-popup
+      {
+        .col
+        {
+          padding: 0 !important;
+        }
+      }
+    }
+    .pop-up-container .popup-box
+    {
+      padding: 0 !important;
+    }
 }
 // col-lg-2
 //TODO: force 2 column on extra small screen
