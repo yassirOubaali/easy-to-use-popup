@@ -17,7 +17,7 @@ you **can** clone the dist repo from github or from the official website https:/
     - https://cdn-easyToUsePopup.yassiroubaali.com/css/easytousepopup.min.css
 
 ## Documentation
-To Activate the popup run this code after
+To Activate the popup run this code after integrating the easytousepopup.min.js file
 ```
 easyToUsePopup.create(true ,[
     {type: "title", value: "Hello, World"}
