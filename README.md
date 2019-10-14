@@ -41,8 +41,7 @@ Easy To Use Popup Need Two Parameters
        closeAnimation: "bounce", // animation type check the animations section
     [eleements]);
     ```
-- The Second one for the elements
-he first One for the popup style, animation and close image
+- The Second one for the elements that you want inside the popup
     ```
     easyToUsePopup.create(true,
     [
