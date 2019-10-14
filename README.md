@@ -29,7 +29,7 @@ Now you will see the popup like this
 ![alt text](https://easyToUsePopup.yassiroubaali.com/img/hello-world-easyToUsePopUp.png)
 
 ## Options
-Easy To Use Popup Need To Parameters
+Easy To Use Popup Need Two Parameters
 - The first One for the popup style, animation and close image
     ```
     easyToUsePopup.create(
