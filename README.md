@@ -33,7 +33,7 @@ Easy To Use Popup Need To Parameters
 - The first One for the popup style, animation and close image
     ```
     easyToUsePopup.create(
-       position: "center", // Make all elements in center
+       position: "center", // Make all elements in center (vertically and horizontally)
        top: 70, // the space between the top of the browser and the popup it's 70 by default
        borderRaduis: 6, // The border raduis of the popup
        closeButton: "/img/cancel.png",// close image path
