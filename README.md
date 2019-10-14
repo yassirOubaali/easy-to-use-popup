@@ -23,7 +23,7 @@ easyToUsePopup.create(true ,[
     {type: "title", value: "Hello, World"}
 ]);
 ```
-**Remember :** that you cannot activate the popup without 0 element you need to add one element minimum
+**Remember :** that you cannot activate the popup with 0 element you need to add one element minimum
 
 Now you will see the popup like this
 ![alt text](https://easyToUsePopup.yassiroubaali.com/img/hello-world-easyToUsePopUp.png)
