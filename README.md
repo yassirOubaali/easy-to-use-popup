@@ -30,7 +30,7 @@ Now you will see the popup like this
 
 ## Options
 Easy To Use Popup Need Two Parameters
-- The first One for the popup style, animation and close image
+- The first one for the popup style, animation and close image
     ```
     easyToUsePopup.create(
        position: "center", // Make all elements in center (vertically and horizontally)
