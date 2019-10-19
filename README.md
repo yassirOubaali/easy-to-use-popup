@@ -1,4 +1,4 @@
-    # easy-to-use-popup
+# easy-to-use-popup
 
 **easy to use popup** is a small open source library that help you create popup easily and make them ready to send the data
 
@@ -33,30 +33,33 @@ Easy To Use Popup Need Two Parameters
 - The first one for the popup style, animation and close image
     ```
     easyToUsePopup.create(
-       position: "center", // Make all elements in center (vertically and horizontally) this is so helpfull if you use the grid element
-       position: "center", // Make all elements in center (vertically and horizontally)
-       top: 70, // the space between the top of the browser and the popup it's 70 by default
-       borderRaduis: 6, // The border raduis of the popup
-       closeButton: "/img/cancel.png",// close image path
-       outerImage: true, // This option if you want the image to be inside the popup or in the top right please check the Outer image section
-       closeAnimation: ["bounce", "slideLeft", "slideRight"], // animation type until today the popup accept 3 type of animations
-       scrollDesign: // this option accept one parameter *{activate: true}* and you will need it if you want to build a popup with a big height so you can style the scroll bar with css this is the class of it **::-webkit-scrollbar <- for the width of the hole bar  ::-webkit-scrollbar-track <- the hole bar track ::-webkit-scrollbar-thumb <- the scroll bar thumb**
-       style: this option until today accept one option *{backgroundImage: '/path/to/image.ext'}* this option put a background image for the popup
+       position: "center",
+       top: 70,
+       borderRaduis: 6, 
+       closeButton: "/img/cancel.png",
+       outerImage: true,
+       closeAnimation: "bounce",
+       scrollDesign: {activate: true},
+       style: {backgroundImage: '/path/to/image.ext'}
     ,[eleements]);
     ```
     - **Popup style parameter** can have 6 options 
-        - position: can accept on parameter *center* if you dan't write it it will work anyway.
+        - position: can accept on parameter *center* if you don't write it it will work anyway, it make all elements in center (vertically and horizontally) this is so helpfull if you use the grid element
         - top: it accept numbers as int(1) or string("1") this one make space ↨ between the top of the document and the popup
-        - borderRaduis: is the border raduis of the popup
+        - borderRaduis: The border raduis of the popup it accept numbers as int(1) or string("1") 
         - closeButton: this parameter accept the url of the image that you want to be the close button
-        - outerImage: accept true or false this propertie is responsable for putting the image button in the popup or int the top right if is true
-        - closeAnimation: until today this properties accept optiions for close animation [bounce, slideLeft, slideRight] 
+        - outerImage: accept true or false this propertie is responsable for putting the image button in the popup (if false or not defined) or in the top right (if is true)
+        - closeAnimation: until today this properties accept 3 options for close animation [bounce, slideLeft, slideRight] 
+        - scrollDesign: this option accept one parameter *{activate: true}* and you will need it if you want to build a popup with a big height so you can style the scroll bar with css this is the class of it **::-webkit-scrollbar <- for the width of the hole bar  ::-webkit-scrollbar-track <- the hole bar track ::-webkit-scrollbar-thumb <- the scroll bar thumb**
+        - style: this option until today accept one option *{backgroundImage: '/path/to/image.ext'}* this option put a background image for the popup
 - The Second one for the elements that you want inside the popup
     ```
     easyToUsePopup.create(true,
     [
      // title eleemnt
         {type: "title", fontsSize: 20, value: "Thex Inside", tag: "H1", customClass: "text-class second-class", id: "input"},
+    // image element
+    
      // grid eleemnt
         {type:"grid", number: 3, grid:[
            {type: "title", fontsSize: 10, value: "first grid element",  tag: "H1"},
