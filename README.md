@@ -75,7 +75,8 @@ Easy To Use Popup Need Two Parameters
     // don't worry if you don't understand all this we will break it down in the next sections 
     ```
 ## Element properties
-- Until today there are 11 [customCss, customClass, fontsSize, align, color, value, require, id, name, onClick, inputType]
+- Until today there are 13 [type, customCss, customClass, fontsSize, align, color, value, require, id, name, onClick, inputType, tag]
+    - type: the type of the input until today the popup support [text or title, form, grid, input, space, html, img or image] or you can enter
     - customCss: you can enter css code as string like this **"position: relative;display: block;max-width: 1200px;"** and the previous styles will not be override
     - customClass: you can enter classes as string like this **"text-class second-class"** you can enter one class or multiple class
     - fontsSize: is the font size of the element it's helpfull for text or title and it accept numbers as int or string
@@ -85,7 +86,10 @@ Easy To Use Popup Need Two Parameters
     - require: this propertie work for input it work like required attribute
     - id: put the id for the element
     - name: this propertie is helpfull for input without is you cannot send form data
-    - onClick: this is onclick event it accept **Anonymous function** and name of the function as function or as string see the example above
+    - onClick: this is onclick event it accept **Anonymous function** and name of the function as function or as string see the code above
+    - inputType: this propertie work just if the type is input
+    - tag: this one work for text or title because the title or text by default it append element as div and you can cang the tag to what ever you want
+
 
 
 TODO: please don't forget the the localhost style
