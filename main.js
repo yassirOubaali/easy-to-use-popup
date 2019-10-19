@@ -1,6 +1,6 @@
 // ---- Create the function
 // TODO: the form can upload files and pictures in the next version
-let easyToUsePopup = {
+var easyToUsePopup = {
   create: function (popupType, popupElement) {
     if (typeof popupElement == 'undefined' || typeof popupElement != "object")
     {
@@ -69,14 +69,26 @@ let easyToUsePopup = {
         --- EMPTY ELEMENT TAGNAME ERROR ---
         - This function is activated when the user leave the type empty or dosen't call it
        ---------------------------------- */
-       function elementTagEmptyError()
-       {
-         let theElementError = document.createElement("div");
-         theElementError.classList.add("emptyTagElement");
-         theElementError.textContent = "Object Type cannot be empty";
-         return theElementError;
-       }
+      function elementTagEmptyError()
+      {
+        let theElementError = document.createElement("div");
+        theElementError.classList.add("emptyTagElement");
+        theElementError.textContent = "Object Type cannot be empty";
+        return theElementError;
+      }
 
+      /* -------------------
+        --- IMAGE EXIST  ---
+        - This function check if the image exist
+       --------------------- */
+
+       function imageExists(url, callback) {
+        var img = new Image();
+        img.onload = function() { callback(true); };
+        img.onerror = function() { callback(false); };
+        img.src = url;
+      }
+      
       /* -------------------------
         --- Hide POPUP FUNCTION ---
         - this function is the responsible for closing the popup with the animation or witout it
@@ -97,7 +109,7 @@ let easyToUsePopup = {
           {
             popupContainer.remove();
             document.querySelector('html').style.overflowY = "unset";
-            window.easyToUsePopup = false;
+            window.easyToUsePopupOpen = false;
           }
           else
           {
@@ -131,7 +143,7 @@ let easyToUsePopup = {
                           // unset the html overflow
                           document.querySelector('html').style.overflowY = "unset";
                           // reset the function
-                          window.easyToUsePopup = false;
+                          window.easyToUsePopupOpen = false;
                         }
                       }, 10);
                     }
@@ -153,7 +165,7 @@ let easyToUsePopup = {
                       // unset the html overflow
                       document.querySelector('html').style.overflowY = "unset";
                       // reset the function
-                      window.easyToUsePopup = false;
+                      window.easyToUsePopupOpen = false;
                     }
                   }, 10);
                 break;
@@ -171,10 +183,14 @@ let easyToUsePopup = {
                       // remove popup from the DOM
                       document.querySelector('html').style.overflowY = "unset";
                       // reset the function
-                      window.easyToUsePopup = false;
+                      window.easyToUsePopupOpen = false;
                     }
                   }, 10);
                 break;
+              default:
+                popupContainer.remove();
+                document.querySelector('html').style.overflowY = "unset";
+                window.easyToUsePopupOpen = false;
             }
           }
 
@@ -212,17 +228,28 @@ let easyToUsePopup = {
           theCreatedElement.append(label);
         }
         // ------ Css Values
-        if (typeof popupElement.customCss !== "undefined")
+        if (typeof popupElement.customCss != "undefined")
         {
           createdElement.setAttribute("style", popupElement.customCss);
         }
-        if (typeof popupElement.customClass !== "undefined")
+        if (typeof popupElement.customClass != "undefined")
         {
-          createdElement.classList.add(popupElement.customClass);
+          // check if the string of the class containe spaces
+          if (!/\s/.test(popupElement.customClass))
+          {
+            createdElement.classList.add(popupElement.customClass);
+          }
+          else 
+          {
+            let classesValues = popupElement.customClass.split(" ");
+            for (let cv = 0; cv < classesValues.length; cv++) {
+              createdElement.classList.add(classesValues[cv]);
+            }
+          }
         }
-        if (typeof popupElement.fontsSize !== "undefined" && typeof popupElement.fontsSize == "number")
+        if (typeof popupElement.fontsSize != "undefined")
         {
-          createdElement.style.fontSize = (createdElement.fontsSize) + "px";
+          createdElement.style.fontSize = (popupElement.fontsSize) + "px";
         }
         if (typeof popupElement.align !== "undefined")
         {
@@ -236,12 +263,12 @@ let easyToUsePopup = {
             createdElement.style.textAlign = popupElement.align;
           }
         }
-        if (typeof popupElement.color !== "undefined" && popupElement.color != "")
+        if (typeof popupElement.color != "undefined" && popupElement.color != "")
         {
           createdElement.style.color = popupElement.color ;
         }
         // ------ set attributes
-        if (typeof popupElement.value !== "undefined")
+        if (typeof popupElement.value != "undefined")
         {
           createdElement.setAttribute("value", popupElement.value);
         }
@@ -258,7 +285,8 @@ let easyToUsePopup = {
           createdElement.setAttribute("name", popupElement.name);
         }
         // ----- set events
-        if (typeof popupElement.onClick !== "undefined")
+        //TODO: we need to add on hover on focus and onmouse enter and onmouse leave and on mouse stay
+        if (typeof popupElement.onClick != "undefined")
         {
           if (popupElement.onClick == "CloseEasyToUsePopup")
           {
@@ -382,30 +410,31 @@ let easyToUsePopup = {
 
                      if (typeof popupElementParameter.method != "" && (popupElementParameter.method).toLocaleLowerCase() == "post")
                      {
-                      if (validURL(popupElementParameter.url))
-                      {
+                      // if (validURL(popupElementParameter.url))
+                      // {
                         xhttp.open("POST", popupElementParameter.url, true);
                         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                         xhttp.send(urlEncoded(formDataArrName, formDataArr, formDataIndex));
-                      }
-                      else 
-                      {
-                        console.error("Please Enter a Valid Url");
-                      }
+                      //}
+                      // else 
+                      // {
+                      //   console.error("Please Enter a Valid Url");
+                      // }
                     }
                     else if (typeof popupElementParameter.method != "" && (popupElementParameter.method).toLocaleLowerCase() == "get")
                     {
                       //check the url if it's a valid url
                       
-                      if (validURL(popupElementParameter.url))
-                      {
+                      // if (validURL(popupElementParameter.url))
+                      // {
                         xhttp.open("GET", popupElementParameter.url, true);
                         xhttp.send();
-                      }
-                      else 
-                      {
-                        console.error("Please Enter a Valid Url");
-                      }
+                      // }
+                      // else 
+                      // {
+                      //   console.error("Please Enter a Valid Url");
+                      // }
+                      
                     }
                     else
                     {
@@ -510,10 +539,12 @@ let easyToUsePopup = {
               createElementInner = createAllElement(popupElementParameter.grid[j]);
 
               if (popupElementParameter.grid[j].type != "form")
-              {
                 // put properties in the grids parents
                 createElementInner = elementProperties(elementType = true, popupElementParameter.grid[j], createElementInner);
-              }
+
+              // remove the padding of the col class
+              // if (typeof popupElementParameter.gridPadding != "undefined" && popupElementParameter.gridPadding == false)
+              //   createElementDiv.classList.add('pdZ');
 
               // add the class of the grid size specified from the user
               switch (popupElementParameter.number) {
@@ -554,7 +585,7 @@ let easyToUsePopup = {
       function createPopup(popupType, popupElements)
       {
         // check if the popup is not already initialized
-        if (typeof window.easyToUsePopup == "undefined" || window.easyToUsePopup == false)
+        if (typeof window.easyToUsePopupOpen == "undefined" || window.easyToUsePopupOpen == false)
         {
           popupType = typeof popupType !== 'undefined' ? popupType : console.error("create function first parameter cannot be empty");
           popupElements = typeof popupElements !== 'undefined' ? popupElements : console.error("create function second parameter cannot be empty");
@@ -588,20 +619,30 @@ let easyToUsePopup = {
           {
             popupBox.style.top = popupType.top + "px";
           }
-          if (typeof popupType.borderRaduis !== "undefined")
+          else 
+          {
+            popupBox.style.top = 70 + "px";
+          }
+          if (typeof popupType.borderRaduis != "undefined")
           {
             popupBox.setAttribute("style", popupBox.getAttribute("style") + "border-radius:" + popupType.borderRaduis + "px");
           }
-          if (typeof popupType.closeButton !== "undefined")
+          if (typeof popupType.closeButton != "undefined")
           {
-            // the image of close button
-            if (typeof popupType.outerImage !== "undefined" && popupType.outerImage == true)
-            {
-              closepopup.classList.add("closeOuter");
-            }
-            closepopup.classList.add("closeImage");
-            closepopup.style.backgroundImage = "url(" + popupType.closeButton + ")";
-            closepopup.textContent = "";
+            // check if the image exist
+            imageExists(popupType.closeButton, function(exists) {
+              if (exists)
+              {
+                // the image of close button
+                if (typeof popupType.outerImage != "undefined" && popupType.outerImage == true)
+                {
+                  closepopup.classList.add("closeOuter");
+                }
+                closepopup.classList.add("closeImage");
+                closepopup.style.backgroundImage = "url(" + popupType.closeButton + ")";
+                closepopup.textContent = "";
+              }
+            });
           }
           // close the popup when click the close button
           closepopup.addEventListener('click', function () {
@@ -627,7 +668,14 @@ let easyToUsePopup = {
             // the background image of the popup
             if (typeof popupType.style.backgroundImage !== "undefined" && popupType.style.backgroundImage !== "")
             {
-              popupBox.style.backgroundImage = "url(" + popupType.style.backgroundImage + ")";
+              // check if the image exist
+              imageExists(popupType.style.backgroundImage, function(exists) {
+                if (exists)
+                {
+                  // insert the background image
+                  popupBox.style.backgroundImage = "url(" + popupType.style.backgroundImage + ")";
+                }
+              });
             }
           }
 
@@ -686,7 +734,7 @@ let easyToUsePopup = {
           document.body.prepend(popupOverlay);
 
           // this global variable to let the script know that the popup is initialized
-          window.easyToUsePopup = true;
+          window.easyToUsePopupOpen = true;
 
           // this global variable to let the script know that the popup is not hided
           window.easyToUsePopupHide = false;
@@ -705,7 +753,7 @@ let easyToUsePopup = {
   closePopup: function (closeAnimation = null) {
     // this function if the user want to close the popup from his own code
     // check if the popup is active
-    if (window.easyToUsePopup)
+    if (window.easyToUsePopupOpen)
     {
       // now we will close the popup with the animation the user chosen
       window.closePopup(window.closePopupAnimation);
