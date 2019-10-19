@@ -90,6 +90,3 @@ Easy To Use Popup Need Two Parameters
     - inputType: this propertie work just if the type is input
     - tag: this one work for text or title because the title or text by default it append element as div and you can cang the tag to what ever you want
 
-
-
-TODO: please don't forget the the localhost style
