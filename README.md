@@ -75,8 +75,8 @@ Easy To Use Popup Need Two Parameters
     // don't worry if you don't understand all this we will break it down in the next sections 
     ```
 ## Element properties
-- Until today there are 13 [type, customCss, customClass, fontsSize, align, color, value, require, id, name, onClick, inputType, tag]
-    - type: the type of the input until today the popup support [text or title, form, grid, input, space, html, img or image] or you can enter
+- Until today there are 13 **[type, customCss, customClass, fontsSize, align, color, value, require, id, name, onClick, inputType, tag]**
+    - type: the type of the input until today the popup support **[text or title, form, grid, input, space, html, img or image]** or you can enter
     - customCss: you can enter css code as string like this **"position: relative;display: block;max-width: 1200px;"** and the previous styles will not be override
     - customClass: you can enter classes as string like this **"text-class second-class"** you can enter one class or multiple class
     - fontsSize: is the font size of the element it's helpfull for text or title and it accept numbers as int or string
